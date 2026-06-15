@@ -1,0 +1,29 @@
+erDiagram
+  paciente_ent {
+    String paciente_id
+    String zbs_id
+  }
+  ingresos_hosp_ent {
+    String paciente_id
+  }
+  visitas_ap_ent {
+    String paciente_id
+  }
+  visitas_ae_ent {
+    String paciente_id
+  }
+  pruebas_diagn_sticas_ent {
+    String paciente_id
+  }
+  tratamiento_ambulatorio_ent {
+    String paciente_id
+  }
+  visita_urgencias_ent {
+    String paciente_id
+  }
+  paciente_ent ||--o{ ingresos_hosp_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ visitas_ap_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ visitas_ae_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ pruebas_diagn_sticas_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ tratamiento_ambulatorio_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ visita_urgencias_ent : "paciente_id_FK_paciente_id"
