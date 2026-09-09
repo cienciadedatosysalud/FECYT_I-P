@@ -1,0 +1,15 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "fecha_recepcion_dt > '2016-12-31'",
+      "name": "fecha_recepcion_dt",
+      "description": "Rule for column fecha_recepcion_dt"
+    },
+    {
+      "expression": "resultado_ap_dt > fecha_recepcion_dt",
+      "name": "resultado_ap_dt",
+      "description": "Rule for column resultado_ap_dt"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+encoding|code|code_clean|description|subcohort
+CIE-10-ES|C79.8|C798|Neoplasia maligna secundaria de mama|mama
+CIE-10-ES|D24|D24|Neoplasia benigna de mama|mama
+CIE-10-ES|D24.1|D241|Neoplasia benigna de mama derecha|mama
+CIE-10-ES|D24.2|D242|Neoplasia benigna de mama izquierda|mama
+CIE-10-ES|D24.9|D249|Neoplasia benigna de mama no especificada|mama
+CIE-10-ES|C78.5|C785|Neoplasia maligna secundaria de intestino grueso y recto|colorrectal
+CIE-10-ES|D12|D12|Neoplasia benigna de colon, recto, ano y canal anal|colorrectal
+CIE-10-ES|D12.0|D120|Neoplasia benigna de ciego|colorrectal
+CIE-10-ES|D12.1|D121|Neoplasia benigna de ap�ndice|colorrectal
+CIE-10-ES|D12.2|D122|Neoplasia benigna de colon ascendente|colorrectal
+CIE-10-ES|D12.3|D123|Neoplasia benigna de colon transverso|colorrectal
+CIE-10-ES|D12.4|D124|Neoplasia benigna de colon descendente|colorrectal
+CIE-10-ES|D12.5|D125|Neoplasia benigna de colon sigmoide|colorrectal
+CIE-10-ES|D12.6|D126|Neoplasia benigna de colon, no especificada|colorrectal
+CIE-10-ES|D12.7|D127|Neoplasia benigna de uni�n rectosigmoidea|colorrectal
+CIE-10-ES|D12.8|D128|Neoplasia benigna de recto|colorrectal
+CIE-10-ES|D12.9|D129|Neoplasia benigna de ano y canal anal|colorrectal
+CIE-10-ES|D01.3|D013|Carcinoma in situ de ano y canal anal|colorrectal
+CIE-10-ES|C21|C21|Neoplasia maligna de ano y canal anal|colorrectal
+CIE-10-ES|C21.0|C210|Neoplasia maligna de ano, no especificada|colorrectal
+CIE-10-ES|C21.1|C211|Neoplasia maligna de canal anal|colorrectal
+CIE-10-ES|C21.2|C212|Neoplasia maligna de zona cloacog�nica|colorrectal
+CIE-10-ES|C21.8|C218|Neoplasia maligna de localizaciones contiguas de recto, ano y canal anal|colorrectal

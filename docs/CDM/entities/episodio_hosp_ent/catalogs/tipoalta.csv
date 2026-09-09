@@ -1,0 +1,8 @@
+encoding|code|description|tipoalta_cd
+RAE-CMBD|1|Alta a domicilio|1
+RAE-CMBD|2|Traslado a otro hospital|2
+RAE-CMBD|3|Alta voluntaria|3
+RAE-CMBD|4|Exitus|4
+RAE-CMBD|5|Traslado a centro sociosanitario|5
+RAE-CMBD|8|Otros|8
+RAE-CMBD|9|Desconocido|9

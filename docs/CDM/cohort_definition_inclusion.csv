@@ -1,0 +1,130 @@
+encoding|code|code_clean|description|subcohort
+CIE-10-ES|C50.0|C500|Neoplasia maligna de pez�n y areola|mama
+CIE-10-ES|C50.01|C5001|Neoplasia maligna de pez�n y areola, femeninos|mama
+CIE-10-ES|C50.011|C50011|�Neoplasia maligna de pez�n y areola, mama femenina derecha|mama
+CIE-10-ES|C50.012|C50012|Neoplasia maligna de pez�n y areola, mama femenina izquierda|mama
+CIE-10-ES|C50.019|C50019|Neoplasia maligna de pez�n y areola de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.02|C5002|Neoplasia maligna de pez�n y areola, masculinos|mama
+CIE-10-ES|C50.021|C50021|Neoplasia maligna de pez�n y areola, mama masculina derecha|mama
+CIE-10-ES|C50.022|C50022|Neoplasia maligna de pez�n y areola, mama masculina izquierda|mama
+CIE-10-ES|C50.029|C50029|Neoplasia maligna de pez�n y areola de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.1|C501|Neoplasia maligna de porci�n central de mama|mama
+CIE-10-ES|C50.11|C5011|Neoplasia maligna de porci�n central de mama femenina|mama
+CIE-10-ES|C50.111|C50111|Neoplasia maligna de porci�n central de mama femenina derecha|mama
+CIE-10-ES|C50.112|C50112|Neoplasia maligna de porci�n central de mama femenina izquierda|mama
+CIE-10-ES|C50.119|C50119|Neoplasia maligna de porci�n central de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.12|C5012|Neoplasia maligna de porci�n central de mama masculina|mama
+CIE-10-ES|C50.121|C50121|Neoplasia maligna de porci�n central de mama masculina derecha|mama
+CIE-10-ES|C50.122|C50122|Neoplasia maligna de porci�n central de mama masculina izquierda|mama
+CIE-10-ES|C50.129|C50129|Neoplasia maligna de porci�n central de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.2|C502|Neoplasia maligna de cuadrante superior interno de mama|mama
+CIE-10-ES|C50.21|C5021|Neoplasia maligna de cuadrante superior interno de mama femenina|mama
+CIE-10-ES|C50.211|C50211|Neoplasia maligna de cuadrante superior interno de mama femenina derecha|mama
+CIE-10-ES|C50.212|C50212|Neoplasia maligna de cuadrante superior interno de mama femenina izquierda|mama
+CIE-10-ES|C50.219|C50219|Neoplasia maligna de cuadrante superior interno de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.22|C5022|Neoplasia maligna de cuadrante superior interno de mama masculina|mama
+CIE-10-ES|C50.221|C50221|Neoplasia maligna de cuadrante superior interno de mama masculina derecha|mama
+CIE-10-ES|C50.222|C50222|Neoplasia maligna de cuadrante superior interno de mama masculina izquierda|mama
+CIE-10-ES|C50.229|C50229|Neoplasia maligna de cuadrante superior interno de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.3|C503|Neoplasia maligna de cuadrante inferior interno de mama|mama
+CIE-10-ES|C50.31|C5031|Neoplasia maligna de cuadrante inferior interno de mama femenina|mama
+CIE-10-ES|C50.311|C50311|Neoplasia maligna de cuadrante inferior interno de mama femenina derecha|mama
+CIE-10-ES|C50.312|C50312|Neoplasia maligna de cuadrante inferior interno de mama femenina izquierda|mama
+CIE-10-ES|C50.319|C50319|Neoplasia maligna de cuadrante inferior interno de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.32|C5032|Neoplasia maligna de cuadrante inferior interno de mama masculina|mama
+CIE-10-ES|C50.321|C50321|Neoplasia maligna de cuadrante inferior interno de mama masculina derecha|mama
+CIE-10-ES|C50.322|C50322|Neoplasia maligna de cuadrante inferior interno de mama masculina izquierda|mama
+CIE-10-ES|C50.329|C50329|Neoplasia maligna de cuadrante inferior interno de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.4|C504|Neoplasia maligna de cuadrante superior externo de mama|mama
+CIE-10-ES|C50.41|C5041|Neoplasia maligna de cuadrante superior externo de mama femenina|mama
+CIE-10-ES|C50.411|C50411|Neoplasia maligna de cuadrante superior externo de mama femenina derecha|mama
+CIE-10-ES|C50.412|C50412|Neoplasia maligna de cuadrante superior externo de mama femenina izquierda|mama
+CIE-10-ES|C50.419|C50419|Neoplasia maligna de cuadrante superior externo de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.42|C5042|Neoplasia maligna de cuadrante superior externo de mama masculina|mama
+CIE-10-ES|C50.421|C50421|Neoplasia maligna de cuadrante superior externo de mama masculina derecha|mama
+CIE-10-ES|C50.422|C50422|Neoplasia maligna de cuadrante superior externo de mama masculina izquierda|mama
+CIE-10-ES|C50.429|C50429|Neoplasia maligna de cuadrante superior externo de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.5|C505|Neoplasia maligna de cuadrante inferior externo de mama|mama
+CIE-10-ES|C50.51|C5051|Neoplasia maligna de cuadrante inferior externo de mama femenina|mama
+CIE-10-ES|C50.511|C50511|Neoplasia maligna de cuadrante inferior externo de mama femenina derecha|mama
+CIE-10-ES|C50.512|C50512|Neoplasia maligna de cuadrante inferior externo de mama femenina izquierda|mama
+CIE-10-ES|C50.519|C50519|Neoplasia maligna de cuadrante inferior externo de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.52|C5052|Neoplasia maligna de cuadrante inferior externo de mama masculina|mama
+CIE-10-ES|C50.521|C50521|Neoplasia maligna de cuadrante inferior externo de mama masculina derecha|mama
+CIE-10-ES|C50.522|C50522|Neoplasia maligna de cuadrante inferior externo de mama masculina izquierda|mama
+CIE-10-ES|C50.529|C50529|Neoplasia maligna de cuadrante inferior externo de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.6|C506|Neoplasia maligna de cola axilar de mama|mama
+CIE-10-ES|C50.61|C5061|Neoplasia maligna de cola axilar de mama femenina|mama
+CIE-10-ES|C50.611|C50611|Neoplasia maligna de cola axilar de mama femenina derecha|mama
+CIE-10-ES|C50.612|C50612|Neoplasia maligna de cola axilar de mama femenina izquierda|mama
+CIE-10-ES|C50.619|C50619|Neoplasia maligna de cola axilar de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.62|C5062|Neoplasia maligna de cola axilar de mama masculina|mama
+CIE-10-ES|C50.621|C50621|Neoplasia maligna de cola axilar de mama masculina derecha|mama
+CIE-10-ES|C50.622|C50622|Neoplasia maligna de cola axilar de mama masculina izquierda|mama
+CIE-10-ES|C50.629|C50629|Neoplasia maligna de cola axilar de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.8|C508|Neoplasia maligna de localizaciones contiguas de mama|mama
+CIE-10-ES|C50.81|C5081|Neoplasia maligna de localizaciones contiguas de mama femenina|mama
+CIE-10-ES|C50.811|C50811|Neoplasia maligna de localizaciones contiguas de mama femenina derecha|mama
+CIE-10-ES|C50.812|C50812|Neoplasia maligna de localizaciones contiguas de mama femenina izquierda|mama
+CIE-10-ES|C50.819|C50819|Neoplasia maligna de localizaciones contiguas de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.82|C5082|Neoplasia maligna de localizaciones contiguas de mama masculina|mama
+CIE-10-ES|C50.821|C50821|Neoplasia maligna de localizaciones contiguas de mama masculina derecha|mama
+CIE-10-ES|C50.822|C50822|Neoplasia maligna de localizaciones contiguas de mama masculina izquierda|mama
+CIE-10-ES|C50.829|C50829|Neoplasia maligna de localizaciones contiguas de mama masculina, lado no especificado|mama
+CIE-10-ES|C50.9|C509|Neoplasia maligna de localizaci�n no especificada de mama|mama
+CIE-10-ES|C50.91|C5091|Neoplasia maligna de localizaci�n no especificada de mama femenina|mama
+CIE-10-ES|C50.911|C50911|Neoplasia maligna de localizaci�n no especificada de mama femenina derecha|mama
+CIE-10-ES|C50.912|C50912|Neoplasia maligna de localizaci�n no especificada de mama femenina izquierda|mama
+CIE-10-ES|C50.919|C50919|Neoplasia maligna de localizaci�n no especificada de mama femenina, lado no especificado|mama
+CIE-10-ES|C50.92|C5092|Neoplasia maligna de localizaci�n no especificada de mama masculina|mama
+CIE-10-ES|C50.921|C50921|Neoplasia maligna de localizaci�n no especificada de mama masculina derecha|mama
+CIE-10-ES|C50.922|C50922|Neoplasia maligna de localizaci�n no especificada de mama masculina izquierda|mama
+CIE-10-ES|C50.929|C50929|Neoplasia maligna de localizaci�n no especificada de mama masculina, lado no especificado|mama
+CIE-10-ES|D05|D05| Carcinoma in situ de la mama|mama
+CIE-10-ES|D05.0|D050| Carcinoma in situ lobulillar de la mama|mama
+CIE-10-ES|D05.00|D0500| Carcinoma in situ lobulillar de mama no especificada|mama
+CIE-10-ES|D05.01|D0501| Carcinoma in situ lobulillar de mama derecha|mama
+CIE-10-ES|D05.02|D0502| Carcinoma in situ lobulillar de mama izquierda|mama
+CIE-10-ES|D05.1|D051| Carcinoma in situ intraductal (intracanalicular) de la mama|mama
+CIE-10-ES|D05.10|D0510| Carcinoma in situ intraductal de mama no especificada|mama
+CIE-10-ES|D05.11|D0511| Carcinoma in situ intraductal de mama derecha|mama
+CIE-10-ES|D05.12|D0512| Carcinoma in situ intraductal de mama izquierda|mama
+CIE-10-ES|D05.8|D058| Otro tipo especificado de carcinoma in situ de mama|mama
+CIE-10-ES|D05.80|D0580| Otro tipo especificado de carcinoma in situ de mama no especificada|mama
+CIE-10-ES|D05.81|D0581| Otro tipo especificado de carcinoma in situ de mama derecha|mama
+CIE-10-ES|D05.82|D0582| Otro tipo especificado de carcinoma in situ de mama izquierda|mama
+CIE-10-ES|D05.9|D059| Carcinoma in situ de la mama, parte no especificada|mama
+CIE-10-ES|D05.90|D0590| Carcinoma in situ de mama no especificada|mama
+CIE-10-ES|D05.91|D0591| Carcinoma in situ de mama derecha|mama
+CIE-10-ES|D05.92|D0592| Carcinoma in situ de mama izquierda|mama
+CIE-10-ES|D48.6|D486|Neoplasia de comportamiento incierto de mama|mama
+CIE-10-ES|D48.60|D4860|Neoplasia de comportamiento incierto de mama no especificada|mama
+CIE-10-ES|D48.61|D4861|Neoplasia de comportamiento incierto de mama derecha|mama
+CIE-10-ES|D48.62|D4862|eoplasia de comportamiento incierto de mama izquierda|mama
+CIE-10-ES|D49.3|D493|Neoplasia de comportamiento no especificado de mama|mama
+CIAP-2|X76|X76|Neoplasia maligna mama, en la mujer|mama
+CIAP-2|X26|X26|Miedo c�ncer mama, en la mujer|mama
+CIAP-2|Y78|Y78|Otra neoplasia maligna mama genital var�n|mama
+CIE-10-ES|D01.0|D010|Carcinoma in situ de colon|colorrectal
+CIE-10-ES|D01.1|D011|Carcinoma in situ de uni�n rectosigmoidea|colorrectal
+CIE-10-ES|D01.2|D012|Carcinoma in situ de recto|colorrectal
+CIE-10-ES|C18|C18|Neoplasia maligna de colon|colorrectal
+CIE-10-ES|C18.0|C180|Neoplasia maligna de ciego|colorrectal
+CIE-10-ES|C18.1|C181|Neoplasia maligna de ap�ndice|colorrectal
+CIE-10-ES|C18.2|C182|Neoplasia maligna de colon ascendente|colorrectal
+CIE-10-ES|C18.3|C183|Neoplasia maligna de �ngulo hep�tico|colorrectal
+CIE-10-ES|C18.4|C184|Neoplasia maligna de colon transverso|colorrectal
+CIE-10-ES|C18.5|C185|Neoplasia maligna de �ngulo espl�nico|colorrectal
+CIE-10-ES|C18.6|C186|Neoplasia maligna de colon descendente, izquierdo|colorrectal
+CIE-10-ES|C18.7|C187|Neoplasia maligna de colon sigmoide|colorrectal
+CIE-10-ES|C18.8|C188|Neoplasia maligna de localizaciones contiguas de colon|colorrectal
+CIE-10-ES|C18.9|C189|Neoplasia maligna de colon, no especificada|colorrectal
+CIE-10-ES|C19|C19|Neoplasia maligna de uni�n rectosigmoidea|colorrectal
+CIE-10-ES|C21.8|C218|Neoplasia maligna de localizaciones contiguas de recto, ano y canal anal|colorrectal
+CIE-10-ES|D37.3|D373|Neoplasia de comportamiento incierto de ap�ndice|colorrectal
+CIE-10-ES|D37.4|D374|Neoplasia de comportamiento incierto de colon|colorrectal
+CIE-10-ES|D37.5|D375|Neoplasia de comportamiento incierto de recto|colorrectal
+CIE-10-ES|D37.8|D378|Neoplasia de comportamiento incierto de otros �rganos especificados de aparato digestivo|colorrectal
+CIE-10-ES|D49.0|D490|Neoplasia de comportamiento no especificado de aparato digestivo|colorrectal
+CIE-10-ES|D49.2|D492|Neoplasia de comportamiento no especificado de hueso, tejidos blandos y piel|colorrectal
+CIAP-2|D75|D75|Neoplasia malignas de colon/recto|colorrectal

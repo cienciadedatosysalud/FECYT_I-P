@@ -1,0 +1,10 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "visita_dt > '2016-12-31'",
+      "name": "visita_dt",
+      "description": "Rule for column visita_dt"
+    }
+  ]
+}
