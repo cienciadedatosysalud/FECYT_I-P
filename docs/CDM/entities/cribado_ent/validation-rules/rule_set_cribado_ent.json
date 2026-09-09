@@ -1,0 +1,15 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "cribado_dt > '2016-12-31'",
+      "name": "cribado_dt",
+      "description": "Rule for column cribado_dt"
+    },
+    {
+      "expression": "resultadocribado_dt > cribado_dt",
+      "name": "resultadocribado_dt",
+      "description": "Rule for column resultadocribado_dt"
+    }
+  ]
+}

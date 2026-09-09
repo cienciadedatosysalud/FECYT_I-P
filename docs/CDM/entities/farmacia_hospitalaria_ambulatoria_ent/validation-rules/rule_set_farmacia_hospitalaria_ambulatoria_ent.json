@@ -1,0 +1,10 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "ha_dispensacion_dt > '2016-12-31'",
+      "name": "ha_dispensacion_dt",
+      "description": "Rule for column ha_dispensacion_dt"
+    }
+  ]
+}

@@ -1,21 +1,23 @@
 {
-  "created_dt": "20260615090514_cdmb",
+  "created_dt": "20260909143234_cdmb",
   "cdmb_version": "2.0.0",
-  "uuid": "8b49b0ea-62c7-4faa-bbe8-68429534b9df",
+  "uuid": "fd3b6ea8-611c-4fef-afaa-0a5763df7116",
   "metadata": {
-    "project": "FECYT-I+P`",
+    "project": "FECYT-I+P",
     "funder": "FECYT Innovación. Convocatoria I+P\n\nReferencia del proyecto: FCT-25-22533",
     "url_project": "",
     "work_package": "WP1",
     "use_case": "procesos_asistencia_cáncer",
-    "document": "Modelo Común de Datos ",
+    "document": "Modelo Común de Datos",
     "version_sem": "0.0.1",
     "authors": [],
     "keywords": [
       "cáncer",
       "proceso asistencial",
       "minería de procesos",
-      "demoras"
+      "demoras",
+      "mama",
+      "colorrectal"
     ],
     "description": "Este proyecto de investigación tiene como objetivo principal evaluar el acceso efectivo a la atención sanitaria de los pacientes con cáncer de mama y cáncer colorrectal en el Sistema Nacional de Salud (SNS). Ante la preocupación por los tiempos de espera y su posible impacto negativo en los resultados de salud, esta iniciativa propone analizar el proceso asistencial completo, desde el diagnóstico hasta el alta. \n\nEl proyecto es impulsado por el Grupo de Ciencia de Datos para la Investigación en Servicios y Políticas Sanitarias del IACS, en colaboración con el Ministerio de Sanidad y diversas Comunidades Autónomas (como Aragón, Navarra e Islas Baleares).\n\nObjetivos:\n1. Descubrir empíricamente la variedad de trayectorias asistenciales seguidas por pacientes con sospecha de cáncer de mama y colon.\n2. Estimar las diferencias entre el proceso asistencial teórico (basado en guías y manuales) y el proceso asistencial real.\n3. Predecir el impacto de estas diferencias en los resultados sanitarios en los pacientes (e.g., supervivencia o estadio en el momento del tratamiento).\n4. Identificar proveedores asistenciales con mejor desempeño en términos de tiempos de espera y resultados.\n5. Transferir el conocimiento adquirido a las autoridades sanitarias para la mejora de las políticas mediante diálogos informados y cuadros de mando.\n\n\n",
     "notes": "",
@@ -24,13 +26,21 @@
   },
   "cohort": {
     "name": "cancer_mama_colorrectal",
-    "description": "Dos cohortes:\n- Pacientes adultos (mayores de 18 años) con diagnóstico de cáncer de mama\n- Pacientes adultos (mayores de 18 años) con diagnóstico de cáncer colorrectal\n\n",
+    "description": "Dos subcohortes:\n- Pacientes adultos (mayores de 18 años) con diagnóstico de cáncer de mama\n- Pacientes adultos (mayores de 18 años) con diagnóstico de cáncer colorrectal\n\n",
     "inclusion_criteria": "Diagnóstico de cáncer de mama o cáncer colorrectal",
     "exclusion_criteria": "Población menor de 18 años",
     "beginning_study_period": "2017-01-01",
     "end_study_period": "2025-12-31",
-    "cohort_definition_inclusion": null,
-    "cohort_definition_exclusion": null
+    "cohort_definition_inclusion": {
+      "nature": "Condition",
+      "filename": "inclusión.csv",
+      "column_name": "code"
+    },
+    "cohort_definition_exclusion": {
+      "nature": "Condition",
+      "filename": "exclusión.csv",
+      "column_name": "code"
+    }
   },
   "entities": [
     {
@@ -40,7 +50,7 @@
         {
           "label": "paciente_id",
           "description": "Pseudoidentificador de paciente",
-          "standard_classification": "",
+          "standard_classification": "UTF-8",
           "format": "String",
           "type": "Categorical",
           "units": "",
@@ -64,13 +74,101 @@
           "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
-          "possible_data_source": "",
+          "possible_data_source": "Base de datos de usuarios",
           "observations_comments": "",
-          "examples": "",
+          "examples": "\"40301\"",
+          "catalog": null
+        },
+        {
+          "label": "edad_nm",
+          "description": "Edad del paciente en el momento de entrada a la cohorte",
+          "standard_classification": "",
+          "format": "Double",
+          "type": "Numerical",
+          "units": "años",
+          "requirement_level": "Required",
+          "characteristic": "Calculated",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "Base de datos de usuarios",
+          "observations_comments": "edad_nm >= 18 | edad_nm <= 115",
+          "examples": "\"29\"",
+          "catalog": null
+        },
+        {
+          "label": "sexo_cd",
+          "description": "Sexo registral del paciente",
+          "standard_classification": " ISO/IEC 5218",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "\n\"0\"= Unknown; \"1\"= Male; \"2\"= Female; \"9\"= Not applicable",
+          "possible_data_source": "Base de datos de usuarios",
+          "observations_comments": "",
+          "examples": "\"1\"",
+          "catalog": {
+            "filename": "sexo.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "exitus_bl",
+          "description": "Fallecimiento del paciente",
+          "standard_classification": "",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Calculated",
+          "catalog_bl": false,
+          "transformations_from_origin": "\"FALSE\"= No; \"TRUE\"= Yes",
+          "possible_data_source": "Base de datos de usuarios",
+          "observations_comments": "",
+          "examples": "\"1\"",
+          "catalog": null
+        },
+        {
+          "label": "fechaexitus_dt",
+          "description": "Fecha y hora de exitus del paciente",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "\nYYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "Base de datos de usuarios",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
           "catalog": null
         }
       ],
-      "rules": [],
+      "rules": [
+        {
+          "expression": "edad_nm BETWEEN 18 AND 115",
+          "name": "edad_nm",
+          "description": "Rule for column edad_nm"
+        },
+        {
+          "expression": "sexo_cd IN ('0', '1', '2', '9')",
+          "name": "sexo_cd",
+          "description": "Rule for column sexo_cd"
+        },
+        {
+          "expression": "exitus_bl IN ('TRUE', 'FALSE')",
+          "name": "exitus_bl",
+          "description": "Rule for column exitus_bl"
+        },
+        {
+          "expression": "(exitus_bl = FALSE AND exitus_dt IS NULL) OR (exitus_bl = TRUE AND exitus_dt >= '2017-01-01')",
+          "name": "exitus_dt",
+          "description": "Rule for column exitus_dt"
+        }
+      ],
       "synthetic_configuration": {
         "paciente_id": {
           "dist": "random_default",
@@ -81,126 +179,1896 @@
           "dist": "random_default",
           "params": {},
           "null_percentage": 0
+        },
+        "edad_nm": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "sexo_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "exitus_bl": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechaexitus_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
         }
       }
     },
     {
-      "name": "ingresos_hosp_ent",
+      "name": "episodio_hosp_ent",
       "time_varying": false,
       "variables": [
         {
           "label": "paciente_id",
           "description": "Pseudoidentificador de paciente",
-          "standard_classification": "",
+          "standard_classification": "UTF-8",
           "format": "String",
           "type": "Categorical",
           "units": "",
           "requirement_level": "Required",
-          "characteristic": "Calculated",
+          "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "",
           "observations_comments": "",
           "examples": "",
           "catalog": null
+        },
+        {
+          "label": "cnh_cd",
+          "description": "Número identificador de hospital",
+          "standard_classification": "CNH",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "ESRI",
+          "observations_comments": "\nhttps://www.sanidad.gob.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/home.htm",
+          "examples": "\"040097\"",
+          "catalog": {
+            "filename": "cnh.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "fechaadmision_dt",
+          "description": "Fecha de admisión hospitalaria",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "\nYYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "fechaalta_dt",
+          "description": "Fecha de alta hospitalaria",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "\nYYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "tipoalta_cd",
+          "description": "Tipo de alta hospitalaria",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "\"1\"= Alta a domicilio; \"2\"= Traslado a otro hospital; \"3\"= Alta voluntaria; \"4\"= Exitus; \"5\"= Traslado a centro sociosanitario; \"8\"= Otros; \"9\"= Desconocido",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "\nR.D. 69/2015 (https://www.boe.es/buscar/act.php?id=BOE-A-2015-1235)",
+          "examples": "\"2\"",
+          "catalog": {
+            "filename": "tipoalta.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "circ_cont_cd",
+          "description": "Circunstancias de contacto",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "\"P\"= Programado; \"NP\"= No programado; \"D\"= Desconocido",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "\nR.D. 69/2015 (https://www.boe.es/buscar/act.php?id=BOE-A-2015-1235)",
+          "examples": "\"P\"",
+          "catalog": {
+            "filename": "contacto.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "servicio_cd",
+          "description": "Servicio al alta",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "\"CPL\"",
+          "catalog": {
+            "filename": "servicio.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "tipo_contacto_cd",
+          "description": "Tipo de contacto",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "\"3\"",
+          "catalog": {
+            "filename": "tipocontacto.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "fechainicio_qx_dt",
+          "description": "Fecha de inicio de la intervención",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "\nYYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "RAE-CMBD u hoja de quirófano",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "d1_cd",
+          "description": "Diagnóstico principal del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d2_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d3_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d4_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d5_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d6_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d7_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d8_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d9_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d10_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d11_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d12_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d13_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d14_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d15_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d16_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d17_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d18_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d19_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "d20_cd",
+          "description": "Diagnósticos secundarios del espisodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc1_cd",
+          "description": "Procedimiento principal del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc2_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc3_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc4_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc5_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc6_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc7_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc8_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc9_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc10_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc11_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc12_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc13_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc14_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc15_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc16_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc17_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc18_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc19_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "proc20_cd",
+          "description": "Procedimientos secundarios del episodio",
+          "standard_classification": "CIE-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "m1_cd",
+          "description": "Información histológica y de comportamiento del tumor primario",
+          "standard_classification": "CIE-O-3.1",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "m2_cd",
+          "description": "Información histológica y de comportamiento de tumores secundarios",
+          "standard_classification": "CIE-O-3.1",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "m3_cd",
+          "description": "Información histológica y de comportamiento de tumores secundarios",
+          "standard_classification": "CIE-O-3.1",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "m4_cd",
+          "description": "Información histológica y de comportamiento de tumores secundarios",
+          "standard_classification": "CIE-O-3.1",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "m5_cd",
+          "description": "Información histológica y de comportamiento de tumores secundarios",
+          "standard_classification": "CIE-O-3.1",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "m6_cd",
+          "description": "Información histológica y de comportamiento de tumores secundarios",
+          "standard_classification": "CIE-O-3.1",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "RAE-CMBD",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
         }
       ],
-      "rules": []
+      "rules": [
+        {
+          "expression": "admision_dt > '2016-12-31'",
+          "name": "admision_dt",
+          "description": "Rule for column admision_dt"
+        },
+        {
+          "expression": "alta_dt > admision_dt",
+          "name": "alta_dt",
+          "description": "Rule for column alta_dt"
+        },
+        {
+          "expression": "(inicio_qx_dt > admision_dt AND inicio_qx_dt < alta_dt) OR (inicio_qx_dt IS NULL)",
+          "name": "inicio_qx_dt",
+          "description": "Rule for column inicio_qx_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "tipoalta_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "cnh_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "circ_cont_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "servicio_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "tipo_contacto_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d3_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d4_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d5_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d6_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d7_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d8_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d9_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d11_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d12_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d13_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d14_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d15_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d16_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d17_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d18_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d19_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "d20_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc1_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc3_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc4_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc5_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc6_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc7_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc8_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc9_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc11_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc12_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc13_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc14_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc15_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc16_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc17_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc18_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc19_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "proc20_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "m1_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "m2_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "m3_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "m4_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "m5_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "m6_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechaadmision_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechaalta_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechainicio_qx_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
     },
     {
-      "name": "visitas_ap_ent",
+      "name": "contacto_ent",
       "time_varying": false,
       "variables": [
         {
           "label": "paciente_id",
           "description": "Pseudoidentificador de paciente",
-          "standard_classification": "",
+          "standard_classification": "UTF-8",
           "format": "String",
           "type": "Categorical",
           "units": "",
           "requirement_level": "Required",
-          "characteristic": "Calculated",
+          "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "",
           "observations_comments": "",
           "examples": "",
           "catalog": null
+        },
+        {
+          "label": "fechaactividad_dt",
+          "description": "Fecha de la consulta",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE o registro electrónico de Atención Primaria",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "actividad_cd",
+          "description": "Actividad que se ha realizado, por Servicio y profesional",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "HCE o registro electrónico de Atención Primaria",
+          "observations_comments": "",
+          "examples": "\"CPL-M\"",
+          "catalog": {
+            "filename": "actividad.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "recurso_st",
+          "description": "Centro o recurso que presta la atención sanitaria",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "HCE o registro electrónico de Atención Primaria",
+          "observations_comments": "En caso de ser centro hospitalario, emplear clasificación CNH. Si no, usar nombre del centro.",
+          "examples": "\"040097\", \"CS Benita de Ávila\"",
+          "catalog": null
         }
       ],
-      "rules": []
+      "rules": [
+        {
+          "expression": "visita_dt > '2016-12-31'",
+          "name": "visita_dt",
+          "description": "Rule for column visita_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "profesional_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "especialidad_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "recurso_st": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechaactividad_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
     },
     {
-      "name": "visitas_ae_ent",
+      "name": "farmacia_ambulatoria_ent",
       "time_varying": false,
       "variables": [
         {
           "label": "paciente_id",
           "description": "Pseudoidentificador de paciente",
-          "standard_classification": "",
+          "standard_classification": "UTF-8",
           "format": "String",
           "type": "Categorical",
           "units": "",
           "requirement_level": "Required",
-          "characteristic": "Calculated",
+          "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "",
           "observations_comments": "",
           "examples": "",
           "catalog": null
+        },
+        {
+          "label": "med_cd",
+          "description": "Fármaco prescrito",
+          "standard_classification": "ATC codes",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "Prescripción electrónica",
+          "observations_comments": "Cumplimentar código ATC con 7 dígitos",
+          "examples": "\"L01DB03\"",
+          "catalog": null
+        },
+        {
+          "label": "fechainicio_med_dt",
+          "description": "Fecha de prescripción",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "\nYYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "Prescripción electrónica",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "fechafin_med_dt",
+          "description": "Fecha de fin de prescripción",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "\nYYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "Prescripción electrónica",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
         }
       ],
-      "rules": []
+      "rules": [
+        {
+          "expression": "inicio_med_dt > '2016-12-31'",
+          "name": "inicio_med_dt",
+          "description": "Rule for column inicio_med_dt"
+        },
+        {
+          "expression": "fin_med_dt > inicio_med_dt OR fin_med_dt IS NULL",
+          "name": "fin_med_dt",
+          "description": "Rule for column fin_med_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "med_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechainicio_med_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechafin_med_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
     },
     {
-      "name": "pruebas_diagnósticas_ent",
+      "name": "farmacia_hospitalaria_ent",
       "time_varying": false,
       "variables": [
         {
           "label": "paciente_id",
           "description": "Pseudoidentificador de paciente",
-          "standard_classification": "",
+          "standard_classification": "UTF-8",
           "format": "String",
           "type": "Categorical",
           "units": "",
           "requirement_level": "Required",
-          "characteristic": "Calculated",
+          "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "",
           "observations_comments": "",
           "examples": "",
           "catalog": null
+        },
+        {
+          "label": "cnh_cd",
+          "description": "Número identificador de hospital",
+          "standard_classification": "CNH",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "ESRI",
+          "observations_comments": "\nhttps://www.sanidad.gob.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/home.htm",
+          "examples": "\"040097\"",
+          "catalog": {
+            "filename": "cnh.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "h_med_cd",
+          "description": "Fármaco prescrito de manera hospitalaria",
+          "standard_classification": "ATC codes",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "Prescripción electrónica hospitalaria",
+          "observations_comments": "Cumplimentar código ATC con 7 dígitos",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "h_fechadispensacion_dt",
+          "description": "Fecha de dispensación del fármaco",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "\nYYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "Prescripción electrónica hospitalaria",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
         }
       ],
-      "rules": []
+      "rules": [
+        {
+          "expression": "h_dispensacion_dt > '2016-12-31'",
+          "name": "h_dispensacion_dt",
+          "description": "Rule for column h_dispensacion_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "h_med_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "h_fechadispensacion_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
     },
     {
-      "name": "tratamiento_ambulatorio_ent",
+      "name": "farmacia_hospitalaria_ambulatoria_ent",
       "time_varying": false,
       "variables": [
         {
           "label": "paciente_id",
           "description": "Pseudoidentificador de paciente",
-          "standard_classification": "",
+          "standard_classification": "UTF-8",
           "format": "String",
           "type": "Categorical",
           "units": "",
           "requirement_level": "Required",
-          "characteristic": "Calculated",
+          "characteristic": "Observed",
           "catalog_bl": false,
           "transformations_from_origin": "",
           "possible_data_source": "",
           "observations_comments": "",
           "examples": "",
           "catalog": null
+        },
+        {
+          "label": "cnh_cd",
+          "description": "Número identificador de hospital",
+          "standard_classification": "CNH",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "ESRI",
+          "observations_comments": "\nhttps://www.sanidad.gob.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/home.htm",
+          "examples": "\"040097\"",
+          "catalog": {
+            "filename": "cnh.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "ha_med_cd",
+          "description": "Fármaco administrado",
+          "standard_classification": "ATC codes",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "HCE",
+          "observations_comments": "Cumplimentar código ATC con 7 dígitos",
+          "examples": "\"L01XG03\"",
+          "catalog": null
+        },
+        {
+          "label": "ha_fechadispensacion_dt",
+          "description": "Fecha de dispensación del fármaco",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
         }
       ],
-      "rules": []
+      "rules": [
+        {
+          "expression": "ha_dispensacion_dt > '2016-12-31'",
+          "name": "ha_dispensacion_dt",
+          "description": "Rule for column ha_dispensacion_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "ha_med_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "ha_fechadispensacion_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
     },
     {
-      "name": "visita_urgencias_ent",
+      "name": "laboratorio_ent",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "paciente_id",
+          "description": "Pseudoidentificador de paciente",
+          "standard_classification": "UTF-8",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "cnh_cd",
+          "description": "Número identificador de hospital",
+          "standard_classification": "CNH",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "ESRI",
+          "observations_comments": "\nhttps://www.sanidad.gob.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/home.htm",
+          "examples": "\"040097\"",
+          "catalog": {
+            "filename": "cnh.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "fechadeterminacion_dt",
+          "description": "Fecha de realización de la determinación",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE o programa de laboratorio",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "fecharesultado_dt",
+          "description": "Fecha de emisión del resultado",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE o programa de laboratorio",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        }
+      ],
+      "rules": [
+        {
+          "expression": "determinacion_dt > '2016-12-31'",
+          "name": "determinacion_dt",
+          "description": "Rule for column determinacion_dt"
+        },
+        {
+          "expression": "resultado_dt > determinacion_dt",
+          "name": "resultado_dt",
+          "description": "Rule for column resultado_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "fechadeterminacion_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fecharesultado_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
+    },
+    {
+      "name": "imagen_ent",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "paciente_id",
+          "description": "Pseudoidentificador de paciente",
+          "standard_classification": "UTF-8",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "cnh_cd",
+          "description": "Número identificador de hospital",
+          "standard_classification": "CNH",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "ESRI",
+          "observations_comments": "\nhttps://www.sanidad.gob.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/home.htm",
+          "examples": "\"040097\"",
+          "catalog": {
+            "filename": "cnh.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "fechaimagen_dt",
+          "description": "Fecha de realización de la prueba de imagen",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "SIAE",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "imagen_cd",
+          "description": "Tipo de prueba de imagen realizada",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "SIAE",
+          "observations_comments": "Texto libre",
+          "examples": "\"Ecografía\", \"Rx AP\"",
+          "catalog": {
+            "filename": "imagen.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "fecharesultadoimagen_dt",
+          "description": "Fecha de emisión del resultado o informe",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "SIAE",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        }
+      ],
+      "rules": [
+        {
+          "expression": "imagen_dt > '2016-12-31'",
+          "name": "imagen_dt",
+          "description": "Rule for column imagen_dt"
+        },
+        {
+          "expression": "resultadoimagen_dt > imagen_dt",
+          "name": "resultadoimagen_dt",
+          "description": "Rule for column resultadoimagen_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "imagen_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechaimagen_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fecharesultadoimagen_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
+    },
+    {
+      "name": "anatomia_patologica_ent",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "paciente_id",
+          "description": "Pseudoidentificador de paciente",
+          "standard_classification": "UTF-8",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "cnh_cd",
+          "description": "Número identificador de hospital",
+          "standard_classification": "CNH",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "ESRI",
+          "observations_comments": "\nhttps://www.sanidad.gob.es/ciudadanos/prestaciones/centrosServiciosSNS/hospitales/home.htm",
+          "examples": "\"040097\"",
+          "catalog": {
+            "filename": "cnh.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "fecharecepcion_dt",
+          "description": "Fecha de recepción de muestra en Anatomía Patológica",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE o programa de anatomía patológica",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "fecharesultadoap_dt",
+          "description": "Fecha de emisión del informe",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE o programa de anatomía patológica",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        }
+      ],
+      "rules": [
+        {
+          "expression": "fecha_recepcion_dt > '2016-12-31'",
+          "name": "fecha_recepcion_dt",
+          "description": "Rule for column fecha_recepcion_dt"
+        },
+        {
+          "expression": "resultado_ap_dt > fecha_recepcion_dt",
+          "name": "resultado_ap_dt",
+          "description": "Rule for column resultado_ap_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "fecharecepcion_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fecharesultadoap_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
+    },
+    {
+      "name": "cribado_ent",
       "time_varying": false,
       "variables": [
         {
@@ -218,50 +2086,171 @@
           "observations_comments": "",
           "examples": "",
           "catalog": null
+        },
+        {
+          "label": "fechacribado_dt",
+          "description": "Fecha de realización del cribado",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE o registro electrónico de Atención Primaria, registro de tumores",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "cribado_cd",
+          "description": "Tipo de cribado realizado",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "HCE o registro electrónico de Atención Primaria, registro de tumores",
+          "observations_comments": "",
+          "examples": "\"SOH\", \"mamografía\"",
+          "catalog": {
+            "filename": "cribado.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "fecharesultadocribado_dt",
+          "description": "Fecha de emisión del resultado",
+          "standard_classification": "ISO 8601",
+          "format": "Datetime",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "YYYY-MM-DD HH:MM:SS (or empty)",
+          "possible_data_source": "HCE o registro electrónico de Atención Primaria, registro de tumores",
+          "observations_comments": "",
+          "examples": "\"2024-07-20 13:40:43\"",
+          "catalog": null
+        },
+        {
+          "label": "recurso_st",
+          "description": "Centro o recurso que presta la atención sanitaria",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "HCE o registro electrónico de Atención Primaria, registro de tumores",
+          "observations_comments": "En caso de ser centro hospitalario, emplear clasificación CNH. Si no, usar nombre del centro.",
+          "examples": "\"040097\", \"CS Benita de Ávila\"",
+          "catalog": null
         }
       ],
-      "rules": []
+      "rules": [
+        {
+          "expression": "cribado_dt > '2016-12-31'",
+          "name": "cribado_dt",
+          "description": "Rule for column cribado_dt"
+        },
+        {
+          "expression": "resultadocribado_dt > cribado_dt",
+          "name": "resultadocribado_dt",
+          "description": "Rule for column resultadocribado_dt"
+        }
+      ],
+      "synthetic_configuration": {
+        "cribado_cd": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "recurso_st": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fechacribado_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "fecharesultadocribado_dt": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        }
+      }
     }
   ],
   "relationships": [
     {
       "left_entity": "paciente_ent",
-      "right_entity": "ingresos_hosp_ent",
+      "right_entity": "episodio_hosp_ent",
+      "join_type": "LEFT JOIN",
+      "left_column": "paciente_id",
+      "right_column": ""
+    },
+    {
+      "left_entity": "paciente_ent",
+      "right_entity": "contacto_ent",
       "join_type": "LEFT JOIN",
       "left_column": "paciente_id",
       "right_column": "paciente_id"
     },
     {
       "left_entity": "paciente_ent",
-      "right_entity": "visitas_ap_ent",
+      "right_entity": "farmacia_ambulatoria_ent",
       "join_type": "LEFT JOIN",
       "left_column": "paciente_id",
       "right_column": "paciente_id"
     },
     {
       "left_entity": "paciente_ent",
-      "right_entity": "visitas_ae_ent",
+      "right_entity": "farmacia_hospitalaria_ent",
+      "join_type": "LEFT JOIN",
+      "left_column": "paciente_id",
+      "right_column": ""
+    },
+    {
+      "left_entity": "paciente_ent",
+      "right_entity": "farmacia_hospitalaria_ambulatoria_ent",
+      "join_type": "LEFT JOIN",
+      "left_column": "paciente_id",
+      "right_column": ""
+    },
+    {
+      "left_entity": "paciente_ent",
+      "right_entity": "laboratorio_ent",
       "join_type": "LEFT JOIN",
       "left_column": "paciente_id",
       "right_column": "paciente_id"
     },
     {
       "left_entity": "paciente_ent",
-      "right_entity": "pruebas_diagnósticas_ent",
+      "right_entity": "imagen_ent",
       "join_type": "LEFT JOIN",
       "left_column": "paciente_id",
       "right_column": "paciente_id"
     },
     {
       "left_entity": "paciente_ent",
-      "right_entity": "tratamiento_ambulatorio_ent",
+      "right_entity": "anatomia_patologica_ent",
       "join_type": "LEFT JOIN",
       "left_column": "paciente_id",
       "right_column": "paciente_id"
     },
     {
       "left_entity": "paciente_ent",
-      "right_entity": "visita_urgencias_ent",
+      "right_entity": "cribado_ent",
       "join_type": "LEFT JOIN",
       "left_column": "paciente_id",
       "right_column": "paciente_id"

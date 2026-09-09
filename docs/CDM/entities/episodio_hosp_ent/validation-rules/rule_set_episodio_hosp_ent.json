@@ -1,0 +1,20 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "admision_dt > '2016-12-31'",
+      "name": "admision_dt",
+      "description": "Rule for column admision_dt"
+    },
+    {
+      "expression": "alta_dt > admision_dt",
+      "name": "alta_dt",
+      "description": "Rule for column alta_dt"
+    },
+    {
+      "expression": "(inicio_qx_dt > admision_dt AND inicio_qx_dt < alta_dt) OR (inicio_qx_dt IS NULL)",
+      "name": "inicio_qx_dt",
+      "description": "Rule for column inicio_qx_dt"
+    }
+  ]
+}

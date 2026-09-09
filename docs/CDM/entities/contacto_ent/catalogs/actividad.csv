@@ -1,0 +1,130 @@
+code|description
+APR-E|consulta Atenci�n Primaria - enfermer�a
+APR-M|consulta Atenci�n Primaria - medicina
+APR-TS|consulta Atenci�n Primaria - trabajo social
+APR-F|consulta Atenci�n Primaria - fisioterapia
+APR-P|consulta Atenci�n Primaria - psicolog�a
+ACL|An�lisis Cl�nicos
+ACV-E|Angiolog�a y Cirug�a Vascular - enfermer�a
+ACV-M|Angiolog�a y Cirug�a Vascular - medicina
+ALG-E|Alergolog�a - enfermer�a
+ALG-M|Alergolog�a - medicina
+ANR-E|Anestesia y Reanimaci�n - enfermer�a
+ANR-M|Anestesia y Reanimaci�n - medicina
+APA|Anatom�a Patol�gica
+BCS|Banco de Sangre
+BIO|Bioqu�mica Cl�nica
+CAR-E|Cardiolog�a - enfermer�a
+CAR-M|Cardiolog�a - medicina
+CCA-E|Cirug�a Cardiaca - enfermer�a
+CCA-M|Cirug�a Cardiaca - medicina
+CCI-E|Cirug�a Cardiaca Infantil - enfermer�a
+CCI-M|Cirug�a Cardiaca Infantil - medicina
+CIR-E|Cirug�a General y Digestiva - enfermer�a
+CIR-M|Cirug�a General y Digestiva - medicina
+CMF-E|Cirug�a Maxilofacial - enfermer�a
+CMF-M|Cirug�a Maxilofacial - medicina
+CPE-E|Cirug�a Pedi�trica - enfermer�a
+CPE-M|Cirug�a Pedi�trica - medicina
+CPL-E|Cirug�a Pl�stica y Reparadora - enfermer�a
+CPL-M|Cirug�a Pl�stica y Reparadora - medicina
+CTO-E|Cirug�a Tor�cica - enfermer�a
+CTO-M|Cirug�a Tor�cica - medicina
+DER-E|Dermatolog�a - enfermer�a
+DER-M|Dermatolog�a - medicina
+DIE|Diet�tica
+DIG-E|Digestivo - enfermer�a
+DIG-M|Digestivo - medicina
+END-E|Endocrinolog�a - enfermer�a
+END-M|Endocrinolog�a - medicina
+EST-E|Estomatolog�a - enfermer�a
+EST-M|Estomatolog�a - medicina
+FAC-E|Farmacolog�a Cl�nica - enfermer�a
+FAC-M|Farmacolog�a Cl�nica - medicina
+FAR|Farmacia
+GEN-E|Gen�tica - enfermer�a
+GEN-M|Gen�tica - medicina
+GRT-E|Geriatr�a - enfermer�a
+GRT-M|Geriatr�a - medicina
+HEL|Hematolog�a Laboratorio
+HEM-E|Hematolog�a Cl�nica - enfermer�a
+HEM-M|Hematolog�a Cl�nica - medicina
+INF-E|Enfermedades infecciosas - enfermer�a
+INF-M|Enfermedades infecciosas - medicina
+INM-E|Inmunolog�a - enfermer�a
+INM-M|Inmunolog�a - medicina
+LAB|Laboratorios
+LIT-E|Litotricia - enfermer�a
+LIT-M|Litotricia - medicina
+MIC|Microbiolog�a y Parasitolog�a
+MIN-E|Medicina Intensiva Neonatal - enfermer�a
+MIN-M|Medicina Intensiva Neonatal - medicina
+MIP-E|Medicina Intensiva Pedi�trica - enfermer�a
+MIP-M|Medicina Intensiva Pedi�trica - medicina
+MIR-E|Medicina Interna - enfermer�a
+MIR-M|Medicina Interna - medicina
+MIV-E|Medicina Intensiva - enfermer�a
+MIV-M|Medicina Intensiva - medicina
+MNU|Medicina Nuclear
+MPR|Medicina Preventiva
+NEF-E|Nefrolog�a - enfermer�a
+NEF-M|Nefrolog�a - medicina
+NEO-E|Neonatolog�a - enfermer�a
+NEO-M|Neonatolog�a - medicina
+NFC-E|Neurofisiolog�a Cl�nica - enfermer�a
+NFC-M|Neurofisiolog�a Cl�nica - medicina
+NML-E|Neumolog�a - enfermer�a
+NML-M|Neumolog�a - medicina
+NRC-E|Neurocirug�a - enfermer�a
+NRC-M|Neurocirug�a - medicina
+NRL-E|Neurolog�a - enfermer�a
+NRL-M|Neurolog�a - medicina
+OBG-E|Obstetricia y Ginecolog�a - enfermer�a
+OBG-M|Obstetricia y Ginecolog�a - medicina
+OFT-E|Oftalmolog�a - enfermer�a
+OFT-M|Oftalmolog�a - medicina
+ONC-E|Oncolog�a M�dica - enfermer�a
+ONC-M|Oncolog�a M�dica - medicina
+ONR-E|Oncolog�a Radioter�pica - enfermer�a
+ONR-M|Oncolog�a Radioter�pica - medicina
+ORL-E|Otorrinolaringolog�a - enfermer�a
+ORL-M|Otorrinolaringolog�a - medicina
+OTR|Otros
+PED-E|Pediatr�a - enfermer�a
+PED-M|Pediatr�a - medicina
+PSQ-E|Psiquiatr�a - enfermer�a
+PSQ-M|Psiquiatr�a - medicina
+RAD-E|Radiolog�a - enfermer�a
+RAD-M|Radiolog�a - medicina
+RAI-E|Radiolog�a Intervencionista - enfermer�a
+RAI-M|Radiolog�a Intervencionista - medicina
+RDT-E|Radioterapia - enfermer�a
+RDT-M|Radioterapia - medicina
+REH-E|Rehabilitaci�n - enfermer�a
+REH-M|Rehabilitaci�n - medicina
+REU-E|Reumatolog�a - enfermer�a
+REU-M|Reumatolog�a - medicina
+TBS|Trabajo social hospitalario
+TRA-E|Traumatolog�a y C - enfermer�a Ortop�dica - enfermer�a
+TRA-M|Traumatolog�a y C - medicina Ortop�dica - medicina
+UCG|Unidad de Consejo Gen�tico
+UCP-E|Unidad de Cuidados Paliativos - enfermer�a
+UCP-M|Unidad de Cuidados Paliativos - medicina
+UCR-E|Unidad de Coronaria - enfermer�a
+UCR-M|Unidad de Coronaria - medicina
+UDO-E|Unidad del Dolor - enfermer�a
+UDO-M|Unidad del Dolor - medicina
+UHD-E|Unidad de Hemodi�lisis - enfermer�a
+UHD-M|Unidad de Hemodi�lisis - medicina
+ULM-E|Unidad de Lesionados Medulares - enfermer�a
+ULM-M|Unidad de Lesionados Medulares - medicina
+URH-E|Unidad de Reproducci�n Humana - enfermer�a
+URH-M|Unidad de Reproducci�n Humana - medicina
+URO-E|Urolog�a - enfermer�a
+URO-M|Urolog�a - medicina
+USO-E|Unidad del Sue�o - enfermer�a
+USO-M|Unidad del Sue�o - medicina
+UTR-E|Unidades de Extracci�n y Trasplantes - enfermer�a
+UTR-M|Unidades de Extracci�n y Trasplantes - medicina
+UTX-E|Unidad de Desintoxicaci�n - enfermer�a
+UTX-M|Unidad de Desintoxicaci�n - medicina

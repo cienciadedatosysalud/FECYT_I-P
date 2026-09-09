@@ -1,0 +1,25 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "edad_nm BETWEEN 18 AND 115",
+      "name": "edad_nm",
+      "description": "Rule for column edad_nm"
+    },
+    {
+      "expression": "sexo_cd IN ('0', '1', '2', '9')",
+      "name": "sexo_cd",
+      "description": "Rule for column sexo_cd"
+    },
+    {
+      "expression": "exitus_bl IN ('TRUE', 'FALSE')",
+      "name": "exitus_bl",
+      "description": "Rule for column exitus_bl"
+    },
+    {
+      "expression": "(exitus_bl = FALSE AND exitus_dt IS NULL) OR (exitus_bl = TRUE AND exitus_dt >= '2017-01-01')",
+      "name": "exitus_dt",
+      "description": "Rule for column exitus_dt"
+    }
+  ]
+}

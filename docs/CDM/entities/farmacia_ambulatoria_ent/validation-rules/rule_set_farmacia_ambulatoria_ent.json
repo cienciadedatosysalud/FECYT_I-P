@@ -1,0 +1,15 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "expression": "inicio_med_dt > '2016-12-31'",
+      "name": "inicio_med_dt",
+      "description": "Rule for column inicio_med_dt"
+    },
+    {
+      "expression": "fin_med_dt > inicio_med_dt OR fin_med_dt IS NULL",
+      "name": "fin_med_dt",
+      "description": "Rule for column fin_med_dt"
+    }
+  ]
+}

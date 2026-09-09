@@ -2,28 +2,124 @@ erDiagram
   paciente_ent {
     String paciente_id
     String zbs_id
+    Double edad_nm
+    String sexo_cd
+    Boolean exitus_bl
+    Datetime fechaexitus_dt
   }
-  ingresos_hosp_ent {
+  episodio_hosp_ent {
     String paciente_id
+    String cnh_cd
+    Datetime fechaadmision_dt
+    Datetime fechaalta_dt
+    String tipoalta_cd
+    String circ_cont_cd
+    String servicio_cd
+    String tipo_contacto_cd
+    Datetime fechainicio_qx_dt
+    String d1_cd
+    String d2_cd
+    String d3_cd
+    String d4_cd
+    String d5_cd
+    String d6_cd
+    String d7_cd
+    String d8_cd
+    String d9_cd
+    String d10_cd
+    String d11_cd
+    String d12_cd
+    String d13_cd
+    String d14_cd
+    String d15_cd
+    String d16_cd
+    String d17_cd
+    String d18_cd
+    String d19_cd
+    String d20_cd
+    String proc1_cd
+    String proc2_cd
+    String proc3_cd
+    String proc4_cd
+    String proc5_cd
+    String proc6_cd
+    String proc7_cd
+    String proc8_cd
+    String proc9_cd
+    String proc10_cd
+    String proc11_cd
+    String proc12_cd
+    String proc13_cd
+    String proc14_cd
+    String proc15_cd
+    String proc16_cd
+    String proc17_cd
+    String proc18_cd
+    String proc19_cd
+    String proc20_cd
+    String m1_cd
+    String m2_cd
+    String m3_cd
+    String m4_cd
+    String m5_cd
+    String m6_cd
   }
-  visitas_ap_ent {
+  contacto_ent {
     String paciente_id
+    Datetime fechaactividad_dt
+    String actividad_cd
+    String recurso_st
   }
-  visitas_ae_ent {
+  farmacia_ambulatoria_ent {
     String paciente_id
+    String med_cd
+    Datetime fechainicio_med_dt
+    Datetime fechafin_med_dt
   }
-  pruebas_diagn_sticas_ent {
+  farmacia_hospitalaria_ent {
     String paciente_id
+    String cnh_cd
+    String h_med_cd
+    Datetime h_fechadispensacion_dt
   }
-  tratamiento_ambulatorio_ent {
+  farmacia_hospitalaria_ambulatoria_ent {
     String paciente_id
+    String cnh_cd
+    String ha_med_cd
+    Datetime ha_fechadispensacion_dt
   }
-  visita_urgencias_ent {
+  laboratorio_ent {
     String paciente_id
+    String cnh_cd
+    Datetime fechadeterminacion_dt
+    Datetime fecharesultado_dt
   }
-  paciente_ent ||--o{ ingresos_hosp_ent : "paciente_id_FK_paciente_id"
-  paciente_ent ||--o{ visitas_ap_ent : "paciente_id_FK_paciente_id"
-  paciente_ent ||--o{ visitas_ae_ent : "paciente_id_FK_paciente_id"
-  paciente_ent ||--o{ pruebas_diagn_sticas_ent : "paciente_id_FK_paciente_id"
-  paciente_ent ||--o{ tratamiento_ambulatorio_ent : "paciente_id_FK_paciente_id"
-  paciente_ent ||--o{ visita_urgencias_ent : "paciente_id_FK_paciente_id"
+  imagen_ent {
+    String paciente_id
+    String cnh_cd
+    Datetime fechaimagen_dt
+    String imagen_cd
+    Datetime fecharesultadoimagen_dt
+  }
+  anatomia_patologica_ent {
+    String paciente_id
+    String cnh_cd
+    Datetime fecharecepcion_dt
+    Datetime fecharesultadoap_dt
+  }
+  cribado_ent {
+    String paciente_id
+    Datetime fechacribado_dt
+    String cribado_cd
+    Datetime fecharesultadocribado_dt
+    String recurso_st
+  }
+  paciente_ent ||--o{ episodio_hosp_ent : "paciente_id_FK_unknown"
+  paciente_ent ||--o{ contacto_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ farmacia_ambulatoria_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ farmacia_hospitalaria_ent : "paciente_id_FK_unknown"
+  paciente_ent ||--o{ farmacia_hospitalaria_ambulatoria_ent : "paciente_id_FK_unknown"
+  paciente_ent ||--o{ laboratorio_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ imagen_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ anatomia_patologica_ent : "paciente_id_FK_paciente_id"
+  paciente_ent ||--o{ cribado_ent : "paciente_id_FK_paciente_id"
